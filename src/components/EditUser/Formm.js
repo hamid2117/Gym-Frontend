@@ -11,6 +11,8 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+
 const useStyles = makeStyles((theme) => ({
   main: {
     display: 'grid ',
@@ -36,7 +38,15 @@ const Formm = ({ config, id, setNewData }) => {
       )
       if (dataa) {
         setNewData(dataa)
-        console.log(dataa)
+        toast.success('User Data is updated.', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
         formik.resetForm()
       }
     } catch (error) {

@@ -9,8 +9,6 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import MailIcon from '@material-ui/icons/MailOutline'
 import { useFormik } from 'formik'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
 import * as yup from 'yup'
 import {
   IconButton,
@@ -21,8 +19,8 @@ import {
   Grid,
 } from '@material-ui/core'
 import { Select, InputLabel, MenuItem } from '@material-ui/core'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -101,6 +99,15 @@ export default function Login() {
       })
     if (response && response.data) {
       adminCloseRegister()
+      toast.success('User is Created.', {
+        position: 'top-center',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
       formik.resetForm()
     }
   }

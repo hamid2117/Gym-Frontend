@@ -45,10 +45,11 @@ const User = () => {
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `https://gymhaskdfjlhasdlkjfadshfkjlasd.herokuapp.com/v1/user/${id}`,
+        `https://gymhaskdfjlhasdlkjfadshfkjlasd.herokuapp.com/api/v1/user/${id}`,
         config
       )
       if (data) {
+        console.log(data)
         setNewData(data)
       }
     } catch (error) {

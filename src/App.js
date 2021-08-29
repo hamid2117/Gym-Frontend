@@ -1,5 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { ToastContainer, toast } from 'react-toastify'
+
 import {
   Account,
   Error,
@@ -11,6 +13,8 @@ import {
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { SnackbarProvider } from 'notistack'
 import AdminRoute from './utils/AdminRoute'
+import 'react-toastify/dist/ReactToastify.css'
+
 const useStyles = makeStyles((theme) => ({
   main: {
     '@media (max-width: 500px)': {},
@@ -23,6 +27,17 @@ const App = () => {
   return (
     <>
       <SnackbarProvider maxSnack={13}>
+        <ToastContainer
+          position='top-center'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <main className={classes.main}>
           <Router>
             <Switch>

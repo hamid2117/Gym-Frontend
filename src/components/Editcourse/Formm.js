@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { TextField, Button, Grid } from '@material-ui/core'
 import { useFormik } from 'formik'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+
 const useStyles = makeStyles((theme) => ({
   main: {
     display: 'grid ',
@@ -25,7 +27,15 @@ const Formm = ({ config, id, setNewData }) => {
       )
       if (dataa) {
         setNewData(dataa)
-        console.log(dataa)
+        toast.success('Course Data is updated.', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
         formik.resetForm()
       }
     } catch (error) {

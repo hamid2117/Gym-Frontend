@@ -10,6 +10,8 @@ import {
 } from '../actions'
 import { rows } from '../DummyData'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+
 const getLocalStorage = () => {
   const userData = localStorage.getItem('userdata')
   if (userData) {
@@ -46,6 +48,15 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('userdata')
     dispatch({ type: LOGOUT })
+    toast.error('Logout.', {
+      position: 'top-center',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
   }
 
   const getData = async () => {

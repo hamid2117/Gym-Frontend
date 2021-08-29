@@ -15,6 +15,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { useFormik } from 'formik'
 import { useAuthContext } from '../../context/AuthContext'
 import { Redirect } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import axios from 'axios'
 import * as yup from 'yup'
 
@@ -89,6 +90,15 @@ export default function SignIn({ changeExpand }) {
       setTimeout(() => {
         setRedirect(true)
       }, 800)
+      toast.success('You are logged in .', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
   }
 
@@ -104,95 +114,97 @@ export default function SignIn({ changeExpand }) {
   }
 
   return (
-    <Container component='main' maxWidth='xs'>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <form className={classes.form} onSubmit={formik.handleSubmit}>
-          <TextField
-            variant='standard'
-            margin='normal'
-            required
-            fullWidth
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            helperText={
-              formik.touched.email && formik.errors.email
-                ? formik.errors.email
-                : null || (emailerror && 'This email address not registered')
-            }
-            error={
-              formik.touched.email && formik.errors.email
-                ? true
-                : false || emailerror
-                ? true
-                : false
-            }
-            id='email'
-            label='Email Address'
-            name='email'
-            autoComplete='email'
-            style={{ paddign: 5 }}
-            autoFocus
-          />
-          <TextField
-            variant='standard'
-            margin='normal'
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            helperText={
-              formik.touched.password && formik.errors.password
-                ? formik.errors.password
-                : null || (passworderror && 'Invalid password')
-            }
-            error={
-              formik.touched.password && formik.errors.password
-                ? true
-                : false || passworderror
-                ? true
-                : false
-            }
-            required
-            fullWidth
-            name='password'
-            label='Password'
-            type={showPassword ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton
-                    aria-label='password'
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge='end'
-                  >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            id='password'
-            autoComplete='current-password'
-          />
-          <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
-            label='Remember me'
-            style={{ marginTop: 1 }}
-          />
-          <Button
-            type='submit'
-            fullWidth
-            variant='outlined'
-            color='primary'
-            loading={true}
-            disabled={!formik.isValid}
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-        </form>
-      </div>
-    </Container>
+    <>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <form className={classes.form} onSubmit={formik.handleSubmit}>
+            <TextField
+              variant='standard'
+              margin='normal'
+              required
+              fullWidth
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              helperText={
+                formik.touched.email && formik.errors.email
+                  ? formik.errors.email
+                  : null || (emailerror && 'This email address not registered')
+              }
+              error={
+                formik.touched.email && formik.errors.email
+                  ? true
+                  : false || emailerror
+                  ? true
+                  : false
+              }
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
+              style={{ paddign: 5 }}
+              autoFocus
+            />
+            <TextField
+              variant='standard'
+              margin='normal'
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              helperText={
+                formik.touched.password && formik.errors.password
+                  ? formik.errors.password
+                  : null || (passworderror && 'Invalid password')
+              }
+              error={
+                formik.touched.password && formik.errors.password
+                  ? true
+                  : false || passworderror
+                  ? true
+                  : false
+              }
+              required
+              fullWidth
+              name='password'
+              label='Password'
+              type={showPassword ? 'text' : 'password'}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton
+                      aria-label='password'
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge='end'
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              id='password'
+              autoComplete='current-password'
+            />
+            <FormControlLabel
+              control={<Checkbox value='remember' color='primary' />}
+              label='Remember me'
+              style={{ marginTop: 1 }}
+            />
+            <Button
+              type='submit'
+              fullWidth
+              variant='outlined'
+              color='primary'
+              loading={true}
+              disabled={!formik.isValid}
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </>
   )
 }

@@ -8,6 +8,7 @@ import { IconButton, Button, CircularProgress } from '@material-ui/core'
 import axios from 'axios'
 import { useGlobalUiContext } from './../../context/uiContext'
 import DeleteModel from '../DeleteModel'
+import { toast } from 'react-toastify'
 
 const UserList = () => {
   const [data, setData] = useState(rows)
@@ -34,6 +35,15 @@ const UserList = () => {
       )
       if (response) {
         getData()
+        toast.error('User is deleted.', {
+          position: 'top-center',
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
       }
     } catch (error) {
       console.log(error)
