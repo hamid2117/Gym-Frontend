@@ -18,7 +18,7 @@ const UserList = () => {
   const [deleteData, setDeleteData] = useState(false)
   const [newId, setNewId] = useState('')
   const { adminCloseCourse } = useGlobalUiContext()
-  const { userdata, userlist } = useAuthContext()
+  const { userdata } = useAuthContext()
   const { token } = userdata
 
   const config = {
@@ -94,8 +94,9 @@ const UserList = () => {
 
   const columns = [
     { field: '_id', headerName: 'ID', width: 100 },
-    { field: 'coursetitle', headerName: 'Course Name ', width: 180 },
-    { field: 'lecturelink', headerName: 'Lecture Link ', width: 230 },
+    { field: 'gymname', headerName: 'Gym Name ', width: 180 },
+    { field: 'address', headerName: 'Address', width: 180 },
+    { field: 'contact', headerName: 'Contact', width: 180 },
     {
       field: 'createdAt',
       headerName: 'CreatedAt',
@@ -107,11 +108,6 @@ const UserList = () => {
           </div>
         )
       },
-    },
-    {
-      field: 'instructor',
-      headerName: 'Instructor',
-      width: 150,
     },
     {
       field: 'action',

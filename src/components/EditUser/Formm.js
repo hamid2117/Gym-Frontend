@@ -38,15 +38,8 @@ const Formm = ({ config, id, setNewData }) => {
       )
       if (dataa) {
         setNewData(dataa)
-        toast.success('User Data is updated.', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
+        toast.success('User Data is updated.')
+
         formik.resetForm()
       }
     } catch (error) {

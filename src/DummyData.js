@@ -47,6 +47,7 @@ export const courseData = [
     starttime: '15:00',
     gymname: 'bahadur gym',
     lecturelink: 'https://meet.google.com/',
+    updatedAt: '12-3-2021',
     location: 'alsdkfjaslkd;fj;aslkdfj',
     maxstudents: '80',
   },

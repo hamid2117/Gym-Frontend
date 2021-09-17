@@ -35,15 +35,7 @@ const UserList = () => {
       )
       if (response) {
         getData()
-        toast.error('User is deleted.', {
-          position: 'top-center',
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
+        toast.error('User is deleted.')
       }
     } catch (error) {
       console.log(error)

@@ -99,15 +99,7 @@ export default function Login() {
       })
     if (response && response.data) {
       adminCloseRegister()
-      toast.success('User is Created.', {
-        position: 'top-center',
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      })
+      toast.success('User is Created.')
       formik.resetForm()
     }
   }

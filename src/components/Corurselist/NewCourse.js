@@ -102,6 +102,7 @@ export default function Login() {
       instructordescription: '',
       lecturelink: '',
       instructor: '',
+      // filename: '',
     },
     validateOnBlur: true,
     onSubmit,
@@ -255,6 +256,25 @@ export default function Login() {
                 rowsMax={6}
                 variant='standard'
               />
+              {/* <input
+                accept='image/*'
+                className={classes.input}
+                style={{ display: 'none' }}
+                id='raised-button-file'
+                multiple
+                value={formik.values.filename}
+                onChange={formik.handleChange}
+                type='file'
+              />
+              <label htmlFor='raised-button-file'>
+                <Button
+                  variant='raised'
+                  component='span'
+                  className={classes.button}
+                >
+                  Upload
+                </Button>
+              </label> */}
               <Button className={classes.sign} type='submit'>
                 add Course
               </Button>
